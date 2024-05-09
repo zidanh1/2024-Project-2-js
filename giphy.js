@@ -27,8 +27,10 @@ function renderError(message) {
     `;
 }
 
-function getMemes(searchExpression) {
-  fetch(`${API_PREFIX}${API_KEY}&q=${searchExpression}&limit=25${API_SETTINGS}`)
+function getMemes(searchExpression, memeCount) {
+  fetch(
+    `${API_PREFIX}${API_KEY}&q=${searchExpression}&limit=${memeCount}${API_SETTINGS}`
+  )
     .then((data) => data.json())
     .then(renderGifs)
     .catch(() => renderError("Error retrieving data."));
@@ -37,7 +39,8 @@ function getMemes(searchExpression) {
 function formsubmitted(event) {
   event.preventDefault();
   let inputFieldContent = document.querySelector("[name=meme-input]").value;
-  getMemes(inputFieldContent);
+  let memeCount = document.querySelector("[name=meme=count]").value;
+  getMemes(inputFieldContent, memeCount);
 }
 
 document.querySelector("#meme-form").addEventListener("submit", formsubmitted);
