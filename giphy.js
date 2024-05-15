@@ -39,7 +39,7 @@ function getMemes(searchExpression, memeCount) {
 function formsubmitted(event) {
   event.preventDefault();
   let inputFieldContent = document.querySelector("[name=meme-input]").value;
-  let memeCount = document.querySelector("[name=meme=count]").value;
+  let memeCount = document.querySelector("[name=meme-count]").value;
   getMemes(inputFieldContent, memeCount);
 }
 
